@@ -19,29 +19,29 @@ export const FriendlyFarmerHeader: React.FC<FriendlyFarmerHeaderProps> = ({
   const quickActions = [
     {
       id: 'upload-section',
-      title: 'Diagnose Crop Leaf',
-      desc: 'Upload photo for instant advice',
+      title: t.diagnoseCardTitle || 'Diagnose Crop Leaf',
+      desc: t.diagnoseCardDesc || 'Upload photo for instant advice',
       icon: Camera,
       bg: 'from-emerald-500/20 to-teal-500/10 border-emerald-500/40 text-emerald-300',
     },
     {
       id: 'weather-section',
-      title: 'Live Weather Signal',
-      desc: 'Check dry action window',
+      title: t.weatherCardTitle || 'Live Weather Signal',
+      desc: t.weatherCardDesc || 'Check dry action window',
       icon: CloudSun,
       bg: 'from-cyan-500/20 to-blue-500/10 border-cyan-500/40 text-cyan-300',
     },
     {
       id: 'mandi-section',
-      title: 'Harvest Mandi Rates',
-      desc: 'Prices in ₹ INR & $ USD',
+      title: t.mandiCardTitle || 'Harvest Mandi Rates',
+      desc: t.mandiCardDesc || 'Prices in ₹ INR & $ USD',
       icon: IndianRupee,
       bg: 'from-amber-500/20 to-orange-500/10 border-amber-500/40 text-amber-300',
     },
     {
       id: 'advisor-section',
-      title: 'Ask AI Agronomist',
-      desc: 'Chat about fertilizers & soil',
+      title: t.advisorCardTitle || 'Ask AI Agronomist',
+      desc: t.advisorCardDesc || 'Chat about fertilizers & soil',
       icon: MessageSquare,
       bg: 'from-indigo-500/20 to-purple-500/10 border-indigo-500/40 text-indigo-300',
     },
@@ -59,14 +59,14 @@ export const FriendlyFarmerHeader: React.FC<FriendlyFarmerHeaderProps> = ({
           <div>
             <div className="flex items-center space-x-2">
               <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                Namaste Farmer! 🌾
+                {t.welcomeFarmer}
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40 text-[10px] font-black uppercase">
-                Farmer Friendly Edition
+                {t.languageLabel}
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
-              Simple, climate-smart advice for your crop health & harvest income.
+              {t.welcomeSub}
             </p>
           </div>
         </div>

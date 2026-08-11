@@ -33,24 +33,24 @@ export const TreatmentCalculator: React.FC<TreatmentCalculatorProps> = ({ curren
           </div>
           <div>
             <span className="text-[10px] font-extrabold uppercase tracking-wider text-teal-400">
-              SMART DOSAGE CALCULATOR
+              {t.dosageDesc || 'Precision dosage calculator'}
             </span>
             <h3 className="text-lg font-black text-white">
-              Agronomic Application & Water Calculator
+              {t.dosageTitle || 'Agronomic Application & Water Calculator'}
             </h3>
           </div>
         </div>
 
         <span className="px-3 py-1 rounded-full bg-teal-950 text-teal-300 border border-teal-500/40 text-xs font-bold flex items-center space-x-1 shadow">
           <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-          <span>Precision Dosage</span>
+          <span>{t.languageLabel}</span>
         </span>
       </div>
 
       {/* Acreage Selector Buttons */}
       <div className="mb-6">
         <span className="text-xs font-bold text-slate-300 block mb-2">
-          Select Farm Land Size (Acres):
+          {t.landSize || 'Select Farm Land Size (Acres)'}:
         </span>
         <div className="flex flex-wrap gap-2">
           {[0.5, 1, 2, 2.5, 5, 10].map((size) => (
@@ -78,9 +78,9 @@ export const TreatmentCalculator: React.FC<TreatmentCalculatorProps> = ({ curren
             <Droplets className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase">Water Needed</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase">{t.waterNeeded || 'Water Needed'}</span>
             <p className="text-lg font-black text-white">{waterLiters} Liters</p>
-            <span className="text-[9px] text-cyan-300">200L / Acre standard</span>
+            <span className="text-[9px] text-cyan-300">200L / Acre</span>
           </div>
         </div>
 
@@ -90,9 +90,9 @@ export const TreatmentCalculator: React.FC<TreatmentCalculatorProps> = ({ curren
             <FlaskConical className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase">Bio-Fungicide Dosage</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase">{t.bioDosage || 'Bio-Fungicide Dosage'}</span>
             <p className="text-lg font-black text-white">{dosageMl} ML</p>
-            <span className="text-[9px] text-emerald-300">500ml / Acre dilution</span>
+            <span className="text-[9px] text-emerald-300">500ml / Acre</span>
           </div>
         </div>
 
@@ -102,11 +102,11 @@ export const TreatmentCalculator: React.FC<TreatmentCalculatorProps> = ({ curren
             <IndianRupee className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase">Treatment Cost</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase">{t.treatmentCost || 'Treatment Cost'}</span>
             <p className="text-lg font-black text-emerald-400">
               ₹ {costINR.toLocaleString()} <span className="text-xs text-teal-300 font-normal">(${costUSD})</span>
             </p>
-            <span className="text-[9px] text-amber-300">Estimated input cost</span>
+            <span className="text-[9px] text-amber-300">INR / USD</span>
           </div>
         </div>
 

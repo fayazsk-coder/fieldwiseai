@@ -66,7 +66,7 @@ export const CropSearchAndAIAdvisor: React.FC<CropSearchAndAIAdvisorProps> = ({
         </div>
         <div>
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400">
-            INTELLIGENT AGRONOMIST ASSISTANT
+            {t.languageLabel}
           </span>
           <h3 className="text-base font-extrabold text-white">
             {t.aiAdvisorTitle || 'Ask FieldWise AI Agronomist'}
@@ -80,7 +80,7 @@ export const CropSearchAndAIAdvisor: React.FC<CropSearchAndAIAdvisorProps> = ({
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
           <input
             type="text"
-            placeholder="Search crop name (e.g. Tomato, Paddy, Cotton, Chilli, Wheat)..."
+            placeholder={t.searchPlaceholder || "Search crop name (e.g. Tomato, Paddy, Cotton)..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-forest-950 border border-forest-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 shadow-inner"
@@ -90,7 +90,7 @@ export const CropSearchAndAIAdvisor: React.FC<CropSearchAndAIAdvisorProps> = ({
           type="submit"
           className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-forest-950 font-bold text-xs shadow-md transition"
         >
-          Search Crop
+          {t.searchButton || 'Search Crop'}
         </button>
       </form>
 
@@ -131,7 +131,7 @@ export const CropSearchAndAIAdvisor: React.FC<CropSearchAndAIAdvisorProps> = ({
       <form onSubmit={handleChatSubmit} className="flex items-center space-x-2">
         <input
           type="text"
-          placeholder="Ask a farming question (e.g. Best fertilizer for Tomato in dry weather?)"
+          placeholder={t.askPlaceholder || "Ask a farming question..."}
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
           className="flex-1 bg-forest-950 border border-forest-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
@@ -141,7 +141,7 @@ export const CropSearchAndAIAdvisor: React.FC<CropSearchAndAIAdvisorProps> = ({
           disabled={!chatInput.trim()}
           className="px-3.5 py-2 rounded-xl bg-forest-800 hover:bg-forest-700 disabled:opacity-40 text-emerald-400 font-bold text-xs transition flex items-center space-x-1"
         >
-          <span>Ask AI</span>
+          <span>{t.askButton || 'Ask AI'}</span>
           <Send className="w-3.5 h-3.5" />
         </button>
       </form>
