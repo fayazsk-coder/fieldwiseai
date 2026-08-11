@@ -15,12 +15,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = req.headers.get('x-gemini-api-key') || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
         {
           success: false,
-          error: 'GEMINI_API_KEY is not configured in .env.local. Please add your API key from Google AI Studio.',
+          error: 'GEMINI_API_KEY is not configured on Vercel. Please add GEMINI_API_KEY in Vercel Environment Variables, or enter your key in the app header API key setting.',
         },
         { status: 500 }
       );

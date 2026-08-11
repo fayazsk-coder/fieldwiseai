@@ -80,10 +80,12 @@ export default function Home() {
     setApiResult(null);
 
     try {
+      const userKey = typeof window !== 'undefined' ? localStorage.getItem('user_gemini_key') || '' : '';
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-gemini-api-key': userKey,
         },
         body: JSON.stringify({
           imageBase64: selectedImage,

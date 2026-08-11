@@ -41,13 +41,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, h
         {/* Right side controls */}
         <div className="flex items-center space-x-3">
           
-          {/* API Key Status Indicator */}
-          {!hasApiKey && (
-            <div className="hidden md:flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs">
-              <ShieldAlert className="w-3.5 h-3.5" />
-              <span>Add GEMINI_API_KEY to .env.local</span>
-            </div>
-          )}
+          {/* API Key Settings Button */}
+          <button
+            onClick={() => {
+              const currentKey = localStorage.getItem('user_gemini_key') || '';
+              const key = prompt('Enter your Gemini API Key for Vercel deployment (or leave blank to use server environment key):', currentKey);
+              if (key !== null) {
+                if (key.trim()) {
+                  localStorage.setItem('user_gemini_key', key.trim());
+                  alert('Gemini API key saved in browser storage! 🔑');
+                } else {
+                  localStorage.removeItem('user_gemini_key');
+                  alert('Custom API key removed. Using server environment key.');
+                }
+              }
+            }}
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 text-xs font-bold transition cursor-pointer shadow"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <span>🔑 API Key Settings</span>
+          </button>
 
           {/* Farmer Language Selector */}
           <div className="flex items-center space-x-2 bg-forest-900/90 border border-forest-700/60 rounded-lg px-2.5 py-1.5 shadow-sm hover:border-emerald-500/50 transition">
@@ -58,12 +71,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, h
               onChange={(e) => onLanguageChange(e.target.value as Language)}
               className="bg-transparent text-xs font-semibold text-emerald-300 focus:outline-none cursor-pointer"
             >
-              <option value="en" className="bg-forest-900 text-white">English 🇬🇧</option>
-              <option value="te" className="bg-forest-900 text-white">తెలుగు (Telugu) 🇮🇳</option>
-              <option value="hi" className="bg-forest-900 text-white">हिंदी (Hindi) 🇮🇳</option>
-              <option value="mr" className="bg-forest-900 text-white">मराठी (Marathi) 🇮🇳</option>
-              <option value="kn" className="bg-forest-900 text-white">ಕನ್ನಡ (Kannada) 🇮🇳</option>
-              <option value="ta" className="bg-forest-900 text-white">தமிழ் (Tamil) 🇮🇳</option>
+              <option value="en" className="bg-forest-950 text-white">English 🇬🇧</option>
+              <option value="te" className="bg-forest-950 text-white">తెలుగు (Telugu) 🇮🇳</option>
+              <option value="hi" className="bg-forest-950 text-white">हिंदी (Hindi) 🇮🇳</option>
+              <option value="mr" className="bg-forest-950 text-white">मराठी (Marathi) 🇮🇳</option>
+              <option value="kn" className="bg-forest-950 text-white">ಕನ್ನಡ (Kannada) 🇮🇳</option>
+              <option value="ta" className="bg-forest-950 text-white">தமிழ் (Tamil) 🇮🇳</option>
             </select>
           </div>
 
